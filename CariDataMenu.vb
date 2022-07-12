@@ -24,6 +24,7 @@ Public Class CariDataMenu
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Call ambilKoneksi()
         dr.Close()
         cmd = New MySqlCommand("select * from tbl_data_menu where kode_menu like '%" & tbInputNama.Text & "%' || nama_menu like '%" & tbInputNama.Text & "' ", conn)
         dr = cmd.ExecuteReader

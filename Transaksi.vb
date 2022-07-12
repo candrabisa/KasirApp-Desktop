@@ -165,7 +165,7 @@ Public Class Transaksi
     End Sub
     Private Sub PD_BeginPrint(sender As Object, e As PrintEventArgs) Handles PD.BeginPrint
         Dim pageSetup As New PageSettings
-        pageSetup.PaperSize = New PaperSize("Custom", 250, panjangKertas)
+        pageSetup.PaperSize = New PaperSize("Custom", 300, panjangKertas)
         PD.DefaultPageSettings = pageSetup
     End Sub
 
@@ -206,8 +206,8 @@ Public Class Transaksi
         Dim tinggi As Integer
         Dim i As Long
         For baris As Integer = 0 To dgvCetakStruk.Rows.Count - 1
-            tinggi += 12
-            e.Graphics.DrawString(dgvCetakStruk.Rows(baris).Cells(3).Value.ToString, f10, Brushes.Black, 35, 110 + tinggi)
+            tinggi += 18
+            e.Graphics.DrawString(dgvCetakStruk.Rows(baris).Cells(3).Value.ToString, f10, Brushes.Black, 20, 110 + tinggi)
             e.Graphics.DrawString(dgvCetakStruk.Rows(baris).Cells(5).Value.ToString, f10, Brushes.Black, 0, 110 + tinggi)
 
             i = dgvCetakStruk.Rows(baris).Cells(4).Value
@@ -225,7 +225,7 @@ Public Class Transaksi
     Sub hitungTotal()
         Dim hitung As Long = 0
         For baris As Long = 0 To dgvCetakStruk.Rows.Count - 1
-            hitung = hitung + dgvTransaksi.Rows(baris).Cells(4).Value
+            hitung = hitung + dgvCetakStruk.Rows(baris).Cells(4).Value
         Next
         t_harga = hitung
 
@@ -240,9 +240,9 @@ Public Class Transaksi
         Dim rowCount As Integer
         panjangKertas = 0
 
-        rowCount = dgvTransaksi.Rows.Count
-        panjangKertas = rowCount * 5
-        panjangKertas = panjangKertas + 80
+        rowCount = dgvCetakStruk.RowCount
+        panjangKertas = rowCount * 15
+        panjangKertas = panjangKertas + 210
     End Sub
 
     Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
@@ -294,11 +294,8 @@ Public Class Transaksi
         If e.ColumnIndex = 9 Then
             Dim response = MsgBox("Apakah yakin ingin menghapus data?", MsgBoxStyle.YesNo)
             If response = vbYes Then
-                cmd = New MySqlCommand("delete from tbl_transaksi where id_transaksi = '" & dgvTransaksi.Item(0, dgvTransaksi.CurrentRow.Index).Value & "'", conn)
-                cmd.ExecuteNonQuery()
+                dgvCetakStruk.Rows.RemoveAt(dgvCetakStruk.CurrentRow.Index)
                 MsgBox("Data berhasil dihapus", MsgBoxStyle.Information, "Informasi")
-                Me.Tbl_transaksiTableAdapter.Fill(Me.Db_sotobabaelonDataSet.tbl_transaksi)
-                Me.dgvTransaksi.DataSource = Me.TbltransaksiBindingSource
                 Me.dgvCetakStruk.Refresh()
             Else
                 Exit Sub
@@ -307,11 +304,15 @@ Public Class Transaksi
     End Sub
 
     Private Sub dgvTransaksi_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTransaksi.CellContentClick
+
         If e.ColumnIndex = 9 Then
             Dim response = MsgBox("Apakah yakin ingin menghapus data?", MsgBoxStyle.YesNo)
             If response = vbYes Then
-                dgvCetakStruk.Rows.RemoveAt(dgvCetakStruk.CurrentRow.Index)
+                cmd = New MySqlCommand("delete from tbl_transaksi where id_transaksi = '" & dgvTransaksi.Item(0, dgvTransaksi.CurrentRow.Index).Value & "'", conn)
+                cmd.ExecuteNonQuery()
                 MsgBox("Data berhasil dihapus", MsgBoxStyle.Information, "Informasi")
+                Me.Tbl_transaksiTableAdapter.Fill(Me.Db_sotobabaelonDataSet.tbl_transaksi)
+                Me.dgvTransaksi.DataSource = Me.TbltransaksiBindingSource
                 Me.dgvCetakStruk.Refresh()
             Else
                 Exit Sub

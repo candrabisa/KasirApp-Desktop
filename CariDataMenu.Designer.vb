@@ -63,10 +63,11 @@ Partial Class CariDataMenu
         '
         'tbInputNama
         '
+        Me.tbInputNama.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbInputNama.Location = New System.Drawing.Point(15, 20)
         Me.tbInputNama.Name = "tbInputNama"
         Me.tbInputNama.Size = New System.Drawing.Size(234, 20)
-        Me.tbInputNama.TabIndex = 2
+        Me.tbInputNama.TabIndex = 1
         '
         'dgvCariDataPegawai
         '

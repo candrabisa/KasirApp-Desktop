@@ -36,7 +36,7 @@ CREATE TABLE `tbl_data_menu` (
 
 LOCK TABLES `tbl_data_menu` WRITE;
 /*!40000 ALTER TABLE `tbl_data_menu` DISABLE KEYS */;
-INSERT INTO `tbl_data_menu` VALUES ('baba001','soto babat',12000),('baba002','soto madara',13000),('baba003','AQUA',4000),('baba004','Es Teh',4000);
+INSERT INTO `tbl_data_menu` VALUES ('KP1','KERUPUK KALENG',1000),('KP2','KERUPUK BANGKA',5000),('KP3','EMPING MELINJO',3000),('MD1','PRIM-A',3000),('MD2','S-TEE',5000),('MD3','ES JERUK MANIS',7000),('MD4','ES JERUK TAWAR',5000),('MD5','ES JERUK NIPIS MANIS',7000),('MD6','ES JERUK NIPIS TAWAR',5000),('MD7','ES TEH MANIS',5000),('MD8','ES TEH TAWAR',3000),('MD9','ES BATU',1000),('MH1','JERUK HANGAT MANIS',7000),('MH2','JERUK HANGAT TAWAR',5000),('MH3','JERUK NIPIS HANGAT MANIS',7000),('MH4','JERUK NIPIS HANGAT TAWAR',5000),('MH5','TEH HANGAT MANIS',3000),('MH6','TEH HANGAT TAWAR',2000),('MH7','PUTIH HANGAT',1000),('ST1','SOTOMIE KIKIL',13000),('ST10','SOTO AYAM',13000),('ST11','RISOL',2000),('ST12','NASI',5000),('ST2','SOTOMIE DAGING + KIKIL',17000),('ST3','SOTOMIE DAGING',15000),('ST4','SOTO TANGKAR',19000),('ST5','SOTO IGA',19000),('ST6','SOTO BABAT',13000),('ST7','SOTO BABAT + KIKIL',15000),('ST8','SOTO BABAT + DAGING',17000),('ST9','SOTO SPESIAL',25000);
 /*!40000 ALTER TABLE `tbl_data_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `tbl_transaksi` (
   KEY `tbl_transaksi_FK` (`nip`),
   CONSTRAINT `tbl_data_master_FK` FOREIGN KEY (`kode_menu`) REFERENCES `tbl_data_menu` (`kode_menu`),
   CONSTRAINT `tbl_transaksi_FK` FOREIGN KEY (`nip`) REFERENCES `tbl_data_pegawai` (`nip`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COMMENT='data master';
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COMMENT='data master';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `tbl_transaksi` (
 
 LOCK TABLES `tbl_transaksi` WRITE;
 /*!40000 ALTER TABLE `tbl_transaksi` DISABLE KEYS */;
-INSERT INTO `tbl_transaksi` VALUES (1,'TRX12121212','01/07/2022 14:22:54','baba001','soto babat',12000,2,24000,1,'nam'),(2,'TRX32928173','02/07/2022 14:43:20','baba002','soto madara',13000,1,13000,1,'nam'),(3,'TRX1622508045','04/07/2022 15:33:54','baba001','soto babat',12000,3,36000,1,'nam do san'),(4,'TRX259864686','04/07/2022 19:01:16','baba001','soto babat',12000,2,24000,1,'nam do san'),(5,'TRX259864686','04/07/2022 19:01:16','baba002','soto madara',13000,3,39000,1,'nam do san'),(6,'TRX1345645977','04/07/2022 19:03:21','baba001','soto babat',12,2,24000,1,'nam do san'),(7,'TRX1345645977','04/07/2022 19:03:21','baba002','soto madara',13,3,39000,1,'nam do san'),(8,'TRX1918407972','04/07/2022 19:05:17','baba001','soto babat',12000,3,36000,1,'nam do san'),(9,'TRX1918407972','04/07/2022 19:05:17','baba002','soto madara',13000,2,26000,1,'nam do san'),(10,'TRX383767585','05/07/2022 22:24:29','baba002','soto madara',13000,2,26000,1,'nam do san'),(11,'TRX383767585','06/07/2022 22:24:29','baba001','soto babat',12000,3,36000,1,'nam do san'),(12,'TRX1180172781','06/07/2022 16:21:38','baba002','soto madara',13,1,13000,2,'seo dal mi'),(13,'TRX1180172781','06/07/2022 16:21:38','baba001','soto babat',12,3,36000,2,'seo dal mi'),(14,'TRX1703970446','06/07/2022 16:40:18','baba001','soto babat',12000,3,36000,1,'nam do san'),(15,'TRX1703970446','06/07/2022 16:40:18','baba002','soto madara',13000,2,26000,1,'nam do san'),(16,'TRX390602427','06/07/2022 16:45:33','baba001','soto babat',12000,3,36000,2,'seo dal mi'),(17,'TRX700282415','12/07/2022 12:45:55','baba002','soto madara',13,1,13000,1,'nam do san'),(18,'TRX700282415','12/07/2022 12:45:55','baba001','soto babat',12,2,24000,1,'nam do san'),(19,'TRX1723047098','12/07/2022 12:46:51','baba001','soto babat',12000,2,24000,1,'nam do san'),(20,'TRX1723047098','12/07/2022 12:46:51','baba002','soto madara',13000,3,39000,1,'nam do san'),(21,'TRX187172558','12/07/2022 12:48:19','baba001','soto babat',12000,2,24000,1,'nam do san'),(22,'TRX2073873664','12/07/2022 12:49:08','baba001','soto babat',12000,2,24000,1,'nam do san'),(23,'TRX2073873664','12/07/2022 12:49:08','baba002','soto madara',13000,3,39000,1,'nam do san'),(24,'TRX10343198','12/07/2022 12:50:13','baba002','soto madara',13000,3,39000,1,'nam do san'),(25,'TRX10343198','12/07/2022 12:50:13','baba001','soto babat',12000,1,12000,1,'nam do san'),(26,'TRX385132371','12/07/2022 12:52:47','baba001','soto babat',12,2,24000,1,'nam do san'),(27,'TRX385132371','12/07/2022 12:52:47','baba003','AQUA',4,2,8000,1,'nam do san'),(28,'TRX385132371','12/07/2022 12:52:47','baba004','Es Teh',4,2,8000,1,'nam do san'),(29,'TRX1853209756','12/07/2022 12:56:26','baba002','soto madara',13,3,39000,1,'nam do san'),(30,'TRX1853209756','12/07/2022 12:56:26','baba003','AQUA',4,1,4000,1,'nam do san'),(31,'TRX1853209756','12/07/2022 12:56:26','baba004','Es Teh',4,2,8000,1,'nam do san');
+INSERT INTO `tbl_transaksi` VALUES (32,'TRX1226189858','12/07/2022 18:06:56','MH4','JERUK NIPIS HANGAT TAWAR',5,2,10000,1,'nam do san'),(33,'TRX1226189858','12/07/2022 18:06:56','MD6','ES JERUK NIPIS TAWAR',5,1,5000,1,'nam do san'),(34,'TRX1226189858','12/07/2022 18:06:56','ST8','SOTO BABAT + DAGING',17,1,17000,1,'nam do san'),(35,'TRX1226189858','12/07/2022 18:06:56','ST6','SOTO BABAT',13,1,13000,1,'nam do san'),(36,'TRX1226189858','12/07/2022 18:06:56','ST3','SOTOMIE DAGING',15,1,15000,1,'nam do san'),(37,'TRX1226189858','12/07/2022 18:06:56','ST12','NASI',5,3,15000,1,'nam do san'),(38,'TRX1226189858','12/07/2022 18:06:56','MD1','PRIM-A',3,1,3000,1,'nam do san');
 /*!40000 ALTER TABLE `tbl_transaksi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,4 +147,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-12 13:32:27
+-- Dump completed on 2022-07-12 18:18:41

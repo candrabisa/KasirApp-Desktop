@@ -47,17 +47,24 @@ Public Class DataMenu
             MsgBox("Data belum lengkap", MsgBoxStyle.Information, "Informasi")
         Else
             dr.Close()
-            cmd = New MySqlCommand("insert into tbl_data_menu values('" & tbKodeMenu.Text & "', '" & tbNamaMenu.Text & "',  '" & tbHarga.Text & "')", conn)
-            Dim response = MsgBox("Apakah yakin ingin menyimpan data?", vbQuestion + vbYesNo, "Konfirmasi")
-            If response = vbYes Then
-                cmd.ExecuteNonQuery()
-                MsgBox("Data berhasil disimpan", MsgBoxStyle.Information, "Informasi")
-                Call txtClear()
-                Me.Tbl_data_menuTableAdapter.Fill(Me.Db_sotobabaelonDataSet.tbl_data_menu)
-                Me.dgvDataMenu.DataSource = Me.TbldatamenuBindingSource
-                Me.dgvDataMenu.Refresh()
+            Dim stringReturn As String
+            Dim getKodeMenu As MySqlCommand = New MySqlCommand("select * from tbl_data_menu where kode_menu = '" & tbKodeMenu.Text & "'", conn)
+            stringReturn = getKodeMenu.ExecuteScalar
+            If stringReturn = tbKodeMenu.Text Then
+                MsgBox("Data sudah ada!", MsgBoxStyle.Critical, "Error")
             Else
-                Exit Sub
+                cmd = New MySqlCommand("insert into tbl_data_menu values('" & tbKodeMenu.Text & "', '" & tbNamaMenu.Text & "',  '" & tbHarga.Text & "')", conn)
+                Dim response = MsgBox("Apakah yakin ingin menyimpan data?", vbQuestion + vbYesNo, "Konfirmasi")
+                If response = vbYes Then
+                    cmd.ExecuteNonQuery()
+                    MsgBox("Data berhasil disimpan", MsgBoxStyle.Information, "Informasi")
+                    Call txtClear()
+                    Me.Tbl_data_menuTableAdapter.Fill(Me.Db_sotobabaelonDataSet.tbl_data_menu)
+                    Me.dgvDataMenu.DataSource = Me.TbldatamenuBindingSource
+                    Me.dgvDataMenu.Refresh()
+                Else
+                    Exit Sub
+                End If
             End If
         End If
     End Sub
